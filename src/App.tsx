@@ -1,22 +1,23 @@
-import { useState } from 'react';
-import { TransactionProvider } from './TransactionsContext';
+import { useState } from "react";
 
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
-import { NewTransactionModal } from './NewTransactionModal';
+import { TransactionProvider } from "./hooks/useTransactions";
+import { NewTransactionModal } from "./NewTransactionModal";
 import { GlobalStyle } from "./styles/Global";
 
 export function App() {
-  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false)
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
+    useState(false);
 
   // quando for um evento click ou ação do user
   // começar nome da função com handle...
   function handleOpenNewTransactionModal() {
-    setIsNewTransactionModalOpen(true)
+    setIsNewTransactionModalOpen(true);
   }
 
   function handleCloseNewTransactionModal() {
-    setIsNewTransactionModalOpen(false)
+    setIsNewTransactionModalOpen(false);
   }
 
   return (
@@ -28,7 +29,7 @@ export function App() {
 
       <Dashboard />
 
-      <NewTransactionModal 
+      <NewTransactionModal
         // passando a função via props para o filho
         isOpen={isNewTransactionModalOpen}
         onRequestClose={handleCloseNewTransactionModal}
